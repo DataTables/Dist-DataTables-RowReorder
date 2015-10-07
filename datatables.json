@@ -1,0 +1,10 @@
+{
+    "css": [],
+    "js": [
+        "js/dataTables.rowReorder.js",
+        "js/dataTables.rowReorder.min.js"
+    ],
+    "src-repo": "http://github.com/DataTables/RowReorder",
+    "last-sync": "fa32e99cdb6219636a1e6a63411ddcee2b8ffb21",
+    "last-tag": "1.0.0"
+}
