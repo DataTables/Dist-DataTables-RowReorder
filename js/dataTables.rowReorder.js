@@ -1,11 +1,11 @@
-/*! RowReorder 1.1.0
+/*! RowReorder 1.1.0-dev
  * 2015 SpryMedia Ltd - datatables.net/license
  */
 
 /**
  * @summary     RowReorder
  * @description Row reordering extension for DataTables
- * @version     1.1.0
+ * @version     1.1.0-dev
  * @file        dataTables.rowReorder.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
@@ -24,29 +24,22 @@
 (function( factory ){
 	if ( typeof define === 'function' && define.amd ) {
 		// AMD
-		define( ['jquery', 'datatables.net'], function ( $ ) {
-			return factory( $, window, document );
-		} );
+		define( ['jquery', 'datatables.net'], factory );
 	}
 	else if ( typeof exports === 'object' ) {
 		// CommonJS
-		module.exports = function (root, $) {
-			if ( ! root ) {
-				root = window;
-			}
+		module.exports = function ($) {
+			if ( ! $ ) { $ = require('jquery'); }
+			if ( ! $.fn.dataTable ) { require('datatables.net')($); }
 
-			if ( ! $ || ! $.fn.dataTable ) {
-				$ = require('datatables.net')(root, $).$;
-			}
-
-			return factory( $, root, root.document );
+			factory( $ );
 		};
 	}
 	else {
 		// Browser
-		factory( jQuery, window, document );
+		factory( jQuery );
 	}
-}(function( $, window, document, undefined ) {
+}(function( $ ) {
 'use strict';
 var DataTable = $.fn.dataTable;
 
@@ -495,10 +488,9 @@ $.extend( RowReorder.prototype, {
 		
 		// Emit event
 		this._emitEvent( 'row-reorder', [ fullDiff, {
-			dataSrc:    dataSrc,
-			nodes:      diffNodes,
-			values:     idDiff,
-			triggerRow: dt.row( this.dom.target )
+			dataSrc: dataSrc,
+			nodes:   diffNodes,
+			values:  idDiff
 		} ] );
 
 		// Editor interface
@@ -526,6 +518,13 @@ $.extend( RowReorder.prototype, {
 					}
 				} );
 			}
+			
+			// Trigger post row reorder event
+			this._emitEvent( 'post-row-reorder', [ fullDiff, {
+				dataSrc: dataSrc,
+				nodes:   diffNodes,
+				values:  idDiff
+			} ] );
 
 			dt.draw( false );
 		}
@@ -589,7 +588,7 @@ RowReorder.defaults = {
  * @name RowReorder.version
  * @static
  */
-RowReorder.version = '1.1.0';
+RowReorder.version = '1.1.0-dev';
 
 
 $.fn.dataTable.RowReorder = RowReorder;
