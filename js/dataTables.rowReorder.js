@@ -170,20 +170,14 @@ $.extend( RowReorder.prototype, {
 		// Use `table().container()` rather than just the table node for IE8 -
 		// otherwise it only works once...
 		$(dt.table().container()).on( 'mousedown.rowReorder touchstart.rowReorder', this.c.selector, function (e) {
-			if ( ! that.c.enabled ) {
+			if ( ! that.c.enable ) {
 				return;
 			}
 
 			var tr = $(this).closest('tr');
-			var row = dt.row( tr );
 
 			// Double check that it is a DataTable row
-			if ( row.any() ) {
-				that._emitEvent( 'pre-row-reorder', {
-					node: row.node(),
-					index: row.index()
-				} );
-
+			if ( dt.row( tr ).any() ) {
 				that._mouseDown( e, tr );
 				return false;
 			}
@@ -519,7 +513,7 @@ $.extend( RowReorder.prototype, {
 		// Editor interface
 		if ( this.c.editor ) {
 			// Disable user interaction while Editor is submitting
-			this.c.enabled = false;
+			this.c.enable = false;
 
 			this.c.editor
 				.edit(
@@ -529,7 +523,7 @@ $.extend( RowReorder.prototype, {
 				)
 				.multiSet( dataSrc, idDiff )
 				.one( 'submitComplete', function () {
-					that.c.enabled = true;
+					that.c.enable = true;
 				} )
 				.submit();
 		}
@@ -670,7 +664,7 @@ RowReorder.defaults = {
 	 * Enable / disable RowReorder's user interaction
 	 * @type {Boolean}
 	 */
-	enabled: true,
+	enable: true,
 
 	/**
 	 * Form options to pass to Editor when submitting a change in the row order.
@@ -723,7 +717,7 @@ Api.register( 'rowReorder.enable()', function ( toggle ) {
 
 	return this.iterator( 'table', function ( ctx ) {
 		if ( ctx.rowreorder ) {
-			ctx.rowreorder.c.enabled = toggle;
+			ctx.rowreorder.c.enable = toggle;
 		}
 	} );
 } );
@@ -731,7 +725,7 @@ Api.register( 'rowReorder.enable()', function ( toggle ) {
 Api.register( 'rowReorder.disable()', function () {
 	return this.iterator( 'table', function ( ctx ) {
 		if ( ctx.rowreorder ) {
-			ctx.rowreorder.c.enabled = false;
+			ctx.rowreorder.c.enable = false;
 		}
 	} );
 } );
