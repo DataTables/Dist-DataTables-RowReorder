@@ -1,6 +1,6 @@
 {
     "name": "datatables.net-rowreorder",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "RowReorder for DataTables ",
     "files": [
         "js/dataTables.rowReorder.js"
@@ -22,7 +22,7 @@
     },
     "dependencies": {
         "jquery": ">=1.7",
-        "datatables.net": ">=1.10.9"
+        "datatables.net": "^1.10.15"
     },
     "repository": {
         "type": "git",
