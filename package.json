@@ -5,7 +5,7 @@
     "files": [
         "js/**/*.js"
     ],
-    "main": "./js/dataTables.rowReorder.js",
+    "main": "js/dataTables.rowReorder.js",
     "keywords": [
         "row reordering",
         "DataTables",
