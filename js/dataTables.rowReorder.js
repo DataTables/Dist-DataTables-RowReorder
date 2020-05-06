@@ -235,14 +235,10 @@ $.extend( RowReorder.prototype, {
 		// not what DataTables thinks it is, since we have been altering the
 		// order
 		var nodes = $.unique( dt.rows( { page: 'current' } ).nodes().toArray() );
-		var tops = $.map( nodes, function ( node, i ) {
-			return $(node).position().top - headerHeight;
-		} );
+		var middles = $.map( nodes, function ( node, i ) {
+			var top = $(node).position().top - headerHeight;
 
-		var middles = $.map( tops, function ( top, i ) {
-			return i < tops.length-1 ?
-				(top + tops[i+1]) / 2 :
-				(top + top + $( dt.row( ':last-child' ).node() ).outerHeight() ) / 2;
+			return (top + top + $(node).outerHeight() ) / 2;
 		} );
 
 		this.s.middles = middles;
@@ -434,6 +430,7 @@ $.extend( RowReorder.prototype, {
 		var middles = this.s.middles;
 		var insertPoint = null;
 		var dt = this.s.dt;
+		var body = dt.table().body();
 
 		// Determine where the row should be inserted based on the mouse
 		// position
@@ -450,13 +447,18 @@ $.extend( RowReorder.prototype, {
 
 		// Perform the DOM shuffle if it has changed from last time
 		if ( this.s.lastInsert === null || this.s.lastInsert !== insertPoint ) {
-			var nodes = $.unique( dt.rows( { page: 'current' } ).nodes().toArray() );
-
-			if ( insertPoint > this.s.lastInsert ) {
-				this.dom.target.insertAfter( nodes[ insertPoint-1 ] );
+			if ( insertPoint === 0 ) {
+				this.dom.target.prependTo( body );
 			}
 			else {
-				this.dom.target.insertBefore( nodes[ insertPoint ] );
+				var nodes = $.unique( dt.rows( { page: 'current' } ).nodes().toArray() );
+
+				if ( insertPoint > this.s.lastInsert ) {
+					this.dom.target.insertAfter( nodes[ insertPoint-1 ] );
+				}
+				else {
+					this.dom.target.insertBefore( nodes[ insertPoint ] );
+				}
 			}
 
 			this._cachePositions();
