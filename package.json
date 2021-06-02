@@ -9,7 +9,7 @@
     ],
     "keywords": [
         "RowReorder",
-        "Row Reordering",
+ "Row Reordering",
         "Datatables",
         "jQuery",
         "table",
@@ -17,8 +17,8 @@
         "sort"
     ],
     "dependencies": {
-        "jquery": ">=1.7",
-        "datatables.net": "^1.10.15"
+        "datatables.net": ">=1.10.24",
+        "jquery": ">=1.7"
     },
     "moduleType": [
         "globals",
