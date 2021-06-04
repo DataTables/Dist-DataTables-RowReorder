@@ -3,7 +3,7 @@
     "description": "RowReorder for DataTables",
     "main": "js/dataTables.rowReorder.js",
     "types": "./types/types.d.ts",
-    "version": "1.2.7",
+    "version": "1.2.8",
     "files": [
         "js/**/*.js"
     ],
