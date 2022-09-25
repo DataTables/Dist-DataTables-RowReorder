@@ -10,7 +10,7 @@
         <license type="expression">MIT</license>
         <tags>RowReorder  Row Reordering  Datatables jQuery table</tags>
         <dependencies>
-            <dependency id="datatables.net" version="1.11.5"/>
+            <dependency id="datatables.net" version="1.12.1"/>
         </dependencies>
         <contentFiles>
             <files include="**/*" buildAction="Content"/>
