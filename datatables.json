@@ -10,5 +10,6 @@
         "types/types.d.ts"
     ],
     "src-repo": "http://github.com/DataTables/RowReorder",
-    "last-tag": "1.2.8"
+    "last-tag": "1.2.8",
+    "last-sync": "d354501edd14ace1434e33b35bb01c309c368d3f"
 }
