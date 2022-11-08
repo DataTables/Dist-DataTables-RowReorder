@@ -12,8 +12,8 @@ import DataTable from 'datatables.net';
  * @description Row reordering extension for DataTables
  * @version     1.3.1
  * @file        dataTables.rowReorder.js
- * @author      SpryMedia Ltd (www.sprymedia.co.uk)
- * @contact     www.sprymedia.co.uk/contact
+ * @author      SpryMedia Ltd
+ * @contact     datatables.net
  * @copyright   Copyright 2015-2022 SpryMedia Ltd.
  *
  * This source file is free software, available under the following license:
