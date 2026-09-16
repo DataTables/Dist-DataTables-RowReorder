@@ -5,8 +5,8 @@
 import DataTable, { util, Dom, Api } from 'datatables.net';
 
 // Sanity check that we are using DataTables
-if (!DataTable || !DataTable.versionCheck('3')) {
-    throw 'DataTables RowReorder requires DataTables 3 or newer';
+if (!DataTable || !DataTable.versionCheck('3.1')) {
+    throw 'DataTables RowReorder requires DataTables 3.1 or newer';
 }
 /**
  * RowReorder provides the ability in DataTables to click and drag rows to
@@ -744,7 +744,7 @@ Api.register('rowReorder.disable()', function () {
 DataTable.RowReorder = RowReorder;
 // Attach a listener to the document which listens for DataTables initialisation
 // events so we can automatically initialise
-Dom.s(document).on('init.dt.dtr', function (e, settings, json) {
+Dom.on('init.dt.dtr', function (e, settings, json) {
     if (e.namespace !== 'dt') {
         return;
     }
