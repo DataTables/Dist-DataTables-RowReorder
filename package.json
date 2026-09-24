@@ -35,8 +35,8 @@
         ".": {
             "types": "./types/types.d.ts",
             "import": "./js/dataTables.rowReorder.mjs",
-            "default": "./js/dataTables.rowReorder.mjs",
-            "require": "./js/dataTables.rowReorder.js"
+            "require": "./js/dataTables.rowReorder.js",
+            "default": "./js/dataTables.rowReorder.mjs"
         },
         "./js/*": "./js/*",
         "./package.json": "./package.json"
