@@ -1,4 +1,4 @@
-/*! RowReorder 2.1.0 for DataTables
+/*! RowReorder 2.1.1 for DataTables
  * Copyright (c) SpryMedia Ltd - datatables.net/license
  */
 
@@ -758,7 +758,7 @@ RowReorder.defaults = {
     excludedChildren: 'a',
     cancelable: false
 };
-RowReorder.version = '2.1.0';
+RowReorder.version = '2.1.1';
 
 
 // Doesn't do anything - work around for a bug in DT... Not documented
